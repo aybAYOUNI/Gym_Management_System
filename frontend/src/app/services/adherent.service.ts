@@ -24,7 +24,7 @@ export class AdherentService {
   }
 
   updateAdherent(id: number | undefined, adherent: Adherent): Observable<Adherent> {
-    return this.apiService.put<Adherent>(this.endpoint , id, adherent);
+    return this.apiService.put<Adherent>(`${this.endpoint}/updateAdherent` , id, adherent);
   }
 
 
