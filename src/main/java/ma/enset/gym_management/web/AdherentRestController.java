@@ -7,7 +7,6 @@ import ma.enset.gym_management.dto.AdherentResponseDTO;
 
 import ma.enset.gym_management.exceptions.AdherentAlreadyExistsException;
 import ma.enset.gym_management.exceptions.AdherentIdNotFoundException;
-import ma.enset.gym_management.exceptions.AdherentEmailNotFoundException;
 import ma.enset.gym_management.exceptions.SubscriptionIdNotFoundException;
 import ma.enset.gym_management.services.AdherentService;
 import org.springframework.http.ResponseEntity;
@@ -40,12 +39,6 @@ public class AdherentRestController {
         AdherentResponseDTO adherent = adherentService.getAdherentById(id);
         return ResponseEntity.ok(adherent);
     }
-    @GetMapping(path = "/searchByEmail")
-    public ResponseEntity<AdherentResponseDTO> getAdherentByUserName(@Valid @RequestParam String username) throws AdherentEmailNotFoundException {
-        AdherentResponseDTO adherent = adherentService.getAdherentByEmail(username);
-        return ResponseEntity.ok(adherent);
-    }
-
 
     @PostMapping("/addNewAdherent")
     public ResponseEntity<AdherentResponseDTO> addNewAdherent(
@@ -56,7 +49,7 @@ public class AdherentRestController {
     }
 
 
-    @PutMapping(path = "/updateAdherent/{id}")
+    @PutMapping(path = "/update/{id}")
     public ResponseEntity<AdherentResponseDTO> updateAdherent(@PathVariable Long id, @Valid @RequestBody AdherentDto adherentDto) throws AdherentIdNotFoundException {
       AdherentResponseDTO adherentDtoA = adherentService.updateAdherent(id,adherentDto);
       return ResponseEntity.ok(adherentDtoA);
@@ -75,7 +68,7 @@ public class AdherentRestController {
     }
 
     @GetMapping(path ="/getByUsername")
-    public ResponseEntity<AdherentResponseDTO> getAdherentById(@RequestParam("username") String username) throws AdherentIdNotFoundException {
+    public ResponseEntity<AdherentResponseDTO> getAdherentByUserName(@RequestParam("username") String username) throws AdherentIdNotFoundException {
         AdherentResponseDTO adherent = adherentService.getAdherentByUsername(username);
         return ResponseEntity.ok(adherent);
     }

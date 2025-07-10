@@ -67,6 +67,8 @@ export class AdherentDashboard implements OnInit {
         gender: this.profileForm.value.genre
       };
 
+      console.log(updatedAdherent)
+
       this.adherentService.updateAdherent(updatedAdherent.id,updatedAdherent).subscribe({
         next: (res) => {
           this.adherent = res;
