@@ -3,6 +3,7 @@ import {FormBuilder, FormGroup, ReactiveFormsModule, Validators} from "@angular/
 import {Auth} from '../../services/auth';
 import {Router, RouterLink} from '@angular/router';
 import {CommonModule, NgIf} from '@angular/common';
+import {AuthResponse} from '../../models/auth-response.model';
 
 @Component({
   selector: 'app-authentication',
@@ -33,20 +34,12 @@ export class Authentication implements OnInit {
 
   onSubmit(): void {
       if (this.authForm.valid) {
-        this.authService.login(this.authForm.value).subscribe({
-          next: (response) => {
-            console.log('Login success:', response);
-            localStorage.setItem('token', response.token);
-            this.router.navigate(['/AdherentDashboard']); // rediriger après login
-          },
-          error: (err) => {
-            console.error('Login failed:', err);
-            this.errorMessage = 'Email ou mot de passe incorrect';
-          }
-        });
+        this.authService.login(this.authForm.value).subscribe((response: AuthResponse)=>{
+          console.log('Login success:', response.body?.token);
+          localStorage.setItem('token', response.body!.token);
+          this.router.navigate(['/adherentDashboard']);
+        })
       }
-
-
   }
 
 }

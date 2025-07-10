@@ -7,9 +7,11 @@ import { Observable } from 'rxjs';
 })
 export class ApiService {
   private apiUrl = 'http://localhost:8082/api';
+  private token = localStorage.getItem('token');
   private httpOptions = {
     headers: new HttpHeaders({
-      'Content-Type': 'application/json'
+      'Content-Type': 'application/json',
+      'Authorization': `Bearer ${this.token}`
     })
   };
 

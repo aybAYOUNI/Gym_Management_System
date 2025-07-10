@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import ma.enset.gym_management.enums.Role;
+import org.hibernate.annotations.ColumnDefault;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -18,6 +19,7 @@ import java.util.Collection;
 public class Coach extends User {
 
     @Column(name = "specialite")
+    @ColumnDefault(value = "null")
     private String specialite;
 
     @OneToMany(mappedBy = "coach" , fetch = FetchType.LAZY)

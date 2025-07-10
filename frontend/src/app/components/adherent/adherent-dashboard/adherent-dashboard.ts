@@ -5,6 +5,7 @@ import {Auth} from '../../../services/auth';
 import {Router} from '@angular/router';
 import {Adherent, Sex} from '../../../models/adherent.model';
 import {AdherentService} from '../../../services/adherent.service';
+import {JwtService} from '../../../services/jwt.service';
 
 
 @Component({
