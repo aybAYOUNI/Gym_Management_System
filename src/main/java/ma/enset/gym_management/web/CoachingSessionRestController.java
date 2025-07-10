@@ -19,6 +19,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/sessions")
 @RequiredArgsConstructor
+@CrossOrigin("*")
+
 public class CoachingSessionRestController {
 
     private final CoachingSessionService coachingSessionService;

@@ -16,6 +16,8 @@ import java.util.List;
 @Validated
 @RestController
 @RequestMapping("/api/repast")
+@CrossOrigin("*")
+
 public class RepastRestController {
     private final RepastService repastService;
     public RepastRestController(RepastService repastService) {

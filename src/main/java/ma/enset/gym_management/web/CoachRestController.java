@@ -13,6 +13,7 @@ import java.util.List;
 @Validated
 @RestController
 @RequestMapping("/api/Coach")
+@CrossOrigin("*")
 public class CoachRestController {
     CoachService coachService;
     public CoachRestController(CoachService coachService) {

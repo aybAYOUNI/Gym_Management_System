@@ -6,6 +6,7 @@ import jakarta.validation.constraints.NotBlank;
 import lombok.*;
 import lombok.experimental.SuperBuilder;
 import ma.enset.gym_management.enums.Role;
+import ma.enset.gym_management.enums.Sex;
 
 
 import java.util.ArrayList;
@@ -19,6 +20,14 @@ import java.util.Collection;
 @DiscriminatorValue("ADHERENT")
 public class Adherent extends User {
 
+    @Enumerated(EnumType.STRING)
+    private Sex sex;
+    private int age;
+    private double poids;
+    private String telephone;
+
+
+
 
     public Adherent() {
         this.setRole(Role.ADHERENT);
@@ -30,8 +39,8 @@ public class Adherent extends User {
         this.coachingSessions = coachingSessions;
     }
 
-    public Adherent(Long id, String nom, @Email @NotBlank String email, String password, Role role, Subscription subscription, Collection<RegistrationProgram> registrations, Collection<CoachingSession> coachingSessions) {
-        super(id, nom, email, password, role);
+    public Adherent(Long id, String nom, String firstName, @Email @NotBlank String email, String password, Role role, Subscription subscription, Collection<RegistrationProgram> registrations, Collection<CoachingSession> coachingSessions) {
+        super(id,firstName, nom, email, password, role);
         this.subscription = subscription;
         this.registrations = registrations;
         this.coachingSessions = coachingSessions;

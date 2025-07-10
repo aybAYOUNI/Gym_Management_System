@@ -15,6 +15,7 @@ import java.util.List;
 @Validated
 @RestController
 @RequestMapping("/api/program")
+@CrossOrigin("*")
 public class ProgramRestController {
     private final ProgramService programService;
 

@@ -2,11 +2,7 @@ package ma.enset.gym_management.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 import lombok.*;
-import ma.enset.gym_management.entities.Adherent;
-import ma.enset.gym_management.entities.Program;
 
-
-import java.sql.Date;
 import java.time.LocalDateTime;
 
 
@@ -16,8 +12,9 @@ import java.time.LocalDateTime;
 @Setter
 public class RegistrationProgramDto {
 
-    @JsonFormat(pattern = "dd.MM.yyyy")
+    @JsonFormat(pattern = "dd.MM.yyyy HH:mm:ss")
     private LocalDateTime registeredAt;
+
     private AdherentDto adherent;
     private ProgramDto programs;
 

@@ -21,6 +21,7 @@ import java.util.List;
 @Validated
 @RestController
 @RequestMapping(path = "/api/Adherent")
+@CrossOrigin("*")
 public class AdherentRestController {
 
     public AdherentRestController(AdherentService adherentService) {

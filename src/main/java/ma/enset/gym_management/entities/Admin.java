@@ -22,7 +22,7 @@ public class Admin extends User{
         this.setRole(Role.COACH);
     }
 
-    public Admin(Long id, String nom, @Email @NotBlank String email, String password, Role role) {
-        super(id, nom, email, password, role);
+    public Admin(Long id, String nom, String firstName, String email, String password, Role role) {
+        super(id, nom, firstName, email, password, role);
     }
 }

@@ -95,9 +95,9 @@ public class RegistrationProgramServiceImpl implements RegistrationProgramServic
     }
 
     @Override
-    public RegistrationProgramResponseDto registrationInProgram(LocalDateTime registeredAt, String adherentDtoUserName, String programDtoName) throws AdherentEmailNotFoundException, ProgramNameNotFoundException {
+    public RegistrationProgramResponseDto registrationInProgram( String adherentDtoUserName, String programDtoName) throws AdherentEmailNotFoundException, ProgramNameNotFoundException {
         log.info("inscription  de l'adherent '{}' done le programme '{}'",adherentDtoUserName,programDtoName);
-
+        LocalDateTime registeredAt =LocalDateTime.now();
         Adherent adherent = adherentRepository.findByEmail(adherentDtoUserName);
         if (adherent==null){
             log.warn("Adherent avec userName '{}' non trouvé",adherentDtoUserName);

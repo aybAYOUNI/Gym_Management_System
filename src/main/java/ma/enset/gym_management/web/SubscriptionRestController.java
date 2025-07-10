@@ -19,6 +19,8 @@ import java.util.List;
 @RestController
 @RequestMapping("/api/subscriptions")
 @RequiredArgsConstructor
+@CrossOrigin("*")
+
 
 public class SubscriptionRestController {
 
@@ -39,7 +41,7 @@ public class SubscriptionRestController {
             return ResponseEntity.ok(subscriptionService.get(id));
         }
         @GetMapping("/{type}")
-        public ResponseEntity<List<SubscriptionResponseDto>>searchByTyp(@PathVariable SubscriptionType type) throws SubscriptionTypeNotFoundException {
+        public ResponseEntity<List<SubscriptionResponseDto>>searchByTyp(@Valid @PathVariable SubscriptionType type) throws SubscriptionTypeNotFoundException {
         return ResponseEntity.ok(subscriptionService.getByType(type));
          }
 

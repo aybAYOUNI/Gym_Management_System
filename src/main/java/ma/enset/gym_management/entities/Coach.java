@@ -17,7 +17,7 @@ import java.util.Collection;
 
 public class Coach extends User {
 
-    @Column(name = "specialite", nullable = false)
+    @Column(name = "specialite")
     private String specialite;
 
     @OneToMany(mappedBy = "coach" , fetch = FetchType.LAZY)
@@ -26,15 +26,14 @@ public class Coach extends User {
     @OneToMany(mappedBy = "coach" , fetch = FetchType.LAZY)
     private Collection<Program> programs = new ArrayList<>();
 
-
-    public Coach(String specialite, Collection<CoachingSession> coachingSessions, Collection<Program> programs) {
+    public Coach(Long id, String nom, String firstName, String email, String password, Role role, String specialite, Collection<CoachingSession> coachingSessions, Collection<Program> programs) {
+        super(id, nom, firstName, email, password, role);
         this.specialite = specialite;
         this.coachingSessions = coachingSessions;
         this.programs = programs;
     }
 
-    public Coach(Long id, String nom, @Email @NotBlank String email, String password, Role role, String specialite, Collection<CoachingSession> coachingSessions, Collection<Program> programs) {
-        super(id, nom, email, password, role);
+    public Coach(String specialite, Collection<CoachingSession> coachingSessions, Collection<Program> programs) {
         this.specialite = specialite;
         this.coachingSessions = coachingSessions;
         this.programs = programs;

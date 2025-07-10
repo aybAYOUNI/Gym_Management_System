@@ -19,6 +19,8 @@ import java.util.Date;
 @Setter
 public class RegistrationProgramResponseDto {
     private Long id;
+
+    @JsonFormat(pattern = "dd.MM.yyyy HH:mm:ss")
     private LocalDateTime registeredAt;
 
     private AdherentDto adherent;

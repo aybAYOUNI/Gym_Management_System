@@ -13,7 +13,7 @@ public interface RegistrationProgramService {
     List<RegistrationProgramResponseDto> getRegistrationByAdherent(Long adherentId) throws AdherentIdNotFoundException, RegistrationOfAdherentNotFoundException;
     List<RegistrationProgramResponseDto> getRegistrationByProgram(Long programID) throws ProgramIdNotFoundException, RegistrationOfProgramtNotFoundException;
 
-    RegistrationProgramResponseDto registrationInProgram(LocalDateTime registeredAt, String adherentDtoUserName, String programDtoName) throws AdherentEmailNotFoundException, ProgramNameNotFoundException;
+    RegistrationProgramResponseDto registrationInProgram(String adherentDtoUserName, String programDtoName) throws AdherentEmailNotFoundException, ProgramNameNotFoundException;
 
     void deleteRegistration(Long id);
 }

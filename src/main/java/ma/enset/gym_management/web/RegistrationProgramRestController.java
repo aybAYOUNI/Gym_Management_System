@@ -1,10 +1,12 @@
 package ma.enset.gym_management.web;
 
 
+import com.fasterxml.jackson.annotation.JsonFormat;
 import jakarta.validation.Valid;
 import ma.enset.gym_management.dto.RegistrationProgramResponseDto;
 import ma.enset.gym_management.exceptions.*;
 import ma.enset.gym_management.services.RegistrationProgramService;
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -14,8 +16,11 @@ import java.util.List;
 @Validated
 @RestController
 @RequestMapping("/api/registrationProgram")
+@CrossOrigin("*")
+
 public class RegistrationProgramRestController {
     RegistrationProgramService registrationProgramService;
+
 
     public RegistrationProgramRestController(RegistrationProgramService registrationProgramService) {
         this.registrationProgramService = registrationProgramService;
@@ -31,7 +36,7 @@ public class RegistrationProgramRestController {
         return ResponseEntity.ok(registrationProgramService.getRegistrationsById(id));
     }
     @GetMapping(path = "/registrationDate")
-    public ResponseEntity<RegistrationProgramResponseDto> getRegistrationByDate(@Valid @RequestParam LocalDateTime date) throws RegistrationProgramDateNotFoundException {
+    public ResponseEntity<RegistrationProgramResponseDto> getRegistrationByDate(@RequestParam @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm:ss")  LocalDateTime date) throws RegistrationProgramDateNotFoundException {
         return ResponseEntity.ok(registrationProgramService.getRegistrationByRegisteredAt(date));
     }
     @GetMapping(path = "/registrationOfAdherent/{adherentId}")
@@ -43,12 +48,12 @@ public class RegistrationProgramRestController {
         return ResponseEntity.ok(registrationProgramService.getRegistrationByProgram(programId));
     }
     @PostMapping(path = "/registration")
-    public ResponseEntity<RegistrationProgramResponseDto> registrationInProgram(@Valid @RequestBody  LocalDateTime registeredAt, @Valid @RequestParam String adherentDtoUserName, @RequestParam String programDtoName) throws ProgramNameNotFoundException, AdherentEmailNotFoundException {
+    public ResponseEntity<RegistrationProgramResponseDto> registrationInProgram(@Valid @RequestParam String adherentDtoUserName, @RequestParam String programDtoName) throws ProgramNameNotFoundException, AdherentEmailNotFoundException {
 
-        return ResponseEntity.ok(registrationProgramService.registrationInProgram(registeredAt,adherentDtoUserName,programDtoName));
+        return ResponseEntity.ok(registrationProgramService.registrationInProgram(adherentDtoUserName,programDtoName));
     }
-    @DeleteMapping(path = "/deleteRegistraion")
-    public ResponseEntity<String> deleteRegistration(long id){
+    @DeleteMapping(path = "/deleteRegistraion/{id}")
+    public ResponseEntity<String> deleteRegistration(@PathVariable long id){
         registrationProgramService.deleteRegistration(id);
         return ResponseEntity.ok("l'inscription est supprimé");
     }

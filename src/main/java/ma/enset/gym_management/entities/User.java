@@ -22,6 +22,7 @@ import java.util.List;
 @Inheritance(strategy = InheritanceType.SINGLE_TABLE)
 @DiscriminatorColumn(name="type",
         discriminatorType = DiscriminatorType.STRING)
+
 public class User implements UserDetails {
 
     @Id @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,6 +30,9 @@ public class User implements UserDetails {
 
     @Column(nullable = false, length = 100)
     private String nom;
+
+    @Column(length = 100)
+    private String firstName;
 
     @Email
     @NotBlank
@@ -44,12 +48,12 @@ public class User implements UserDetails {
 
     @Override
     public Collection<? extends GrantedAuthority> getAuthorities() {
-        return null;
+        return List.of(new SimpleGrantedAuthority(role.name()));
     }
 
     @Override
     public String getUsername() {
-        return null;
+        return email;
     }
 
     @Override

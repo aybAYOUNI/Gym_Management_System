@@ -20,10 +20,13 @@ public class Subscription {
     private Long id;
 
     @Column(nullable = false)
+    @Enumerated(EnumType.STRING)
     private SubscriptionType type;
 
     @Column(nullable = false)
     private double prix;
+
+    private boolean isPaid;
 
     @Column(nullable = false)
     private LocalDate dateDebut;

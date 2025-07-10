@@ -1,6 +1,7 @@
 package ma.enset.gym_management.dto;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
+
 import jakarta.validation.constraints.NotNull;
 import jakarta.validation.constraints.Size;
 import lombok.AllArgsConstructor;
@@ -19,15 +20,14 @@ import java.time.LocalDate;
 public class SubscriptionDto {
 
     @NotNull(message = "Le type est obligatoire.")
-    @Size(min = 4, message = "Le nom doit contenir au moins 4 caractères.")
     private SubscriptionType type;
 
     @NotNull(message = "Le prix est obligatoire.")
     private double prix;
 
     @NotNull(message = "La date de dubute est obligatoire.")
-    @JsonFormat(pattern = "dd.MM.yyyy")
-    private LocalDate dateDebut;
+    //@JsonFormat(pattern = "dd.MM.yyyy")
+    private LocalDate dateDebut = LocalDate.now();
 
 
     @NotNull(message = "La date de fin est obligatoire.")
