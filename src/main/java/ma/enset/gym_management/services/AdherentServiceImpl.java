@@ -96,6 +96,11 @@ public class AdherentServiceImpl implements AdherentService {
         return dtoMapper.mapToAdherentResponseDTO(addSubscription);
     }
 
+    @Override
+    public AdherentResponseDTO getAdherentByUsername(String username) {
+        return dtoMapper.mapToAdherentResponseDTO(adherentRepository.findByEmail(username));
+    }
+
 
     @Override
     public AdherentResponseDTO updateAdherent(long adherentId ,AdherentDto adherentDto) throws AdherentIdNotFoundException {

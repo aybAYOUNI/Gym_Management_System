@@ -20,34 +20,37 @@ import {JwtService} from '../../../services/jwt.service';
 export class AdherentDashboard implements OnInit {
   Sex = Sex;
 
-  adherent: Adherent = {
-    firstName: 'Ayoub',
-    nom:'Ayouni',
-    email: 'ayoub@example.com',
-    phone: '',
-    gender:Sex.FEMME,
-    age:0,
-    poids:0,
-
-  };
+  adherent: Adherent = {} as Adherent;
 
   editMode = false;
   profileForm!: FormGroup;
 
   constructor(private fb: FormBuilder, private router: Router,
-              private adherentService: AdherentService) {}
+              private adherentService: AdherentService,
+              private jwtService: JwtService) {}
 
   ngOnInit(): void {
-    this.profileForm = this.fb.group({
-      firstName: [this.adherent.firstName, Validators.required],
-      nom: [this.adherent.nom, Validators.required],
-      email: [this.adherent.email, [Validators.required, Validators.email]],
-      phone: [this.adherent.phone],
-      genre: [this.adherent.gender],
-      age: [this.adherent.age],
-      poids: [this.adherent.poids],
-    });
+      let username = this.jwtService.getUserUsername();
+      this.adherentService.getByUsername(username).subscribe((adherent: Adherent) => {
+        if (adherent) {
+          this.adherent = adherent;
+          this.setAdherentInfos();
+        }
+      })
   }
+
+
+   setAdherentInfos(){
+     this.profileForm = this.fb.group({
+       firstName: [this.adherent.firstName, Validators.required],
+       nom: [this.adherent.nom, Validators.required],
+       email: [this.adherent.email, [Validators.required, Validators.email]],
+       phone: [this.adherent.phone],
+       genre: [this.adherent.gender],
+       age: [this.adherent.age],
+       poids: [this.adherent.poids],
+     });
+   }
 
   toggleEdit(): void {
     this.editMode = !this.editMode;

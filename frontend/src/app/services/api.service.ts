@@ -38,4 +38,9 @@ export class ApiService {
   delete<T>(endpoint: string, id: number): Observable<T> {
     return this.http.delete<T>(`${this.apiUrl}/${endpoint}/${id}`, this.httpOptions);
   }
+
+  getByUsername<T>(endpoint: string): Observable<T> {
+    return this.http.get<T>(`${this.apiUrl}/${endpoint}`, this.httpOptions);
+  }
+
 }

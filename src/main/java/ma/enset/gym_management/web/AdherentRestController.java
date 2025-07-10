@@ -20,7 +20,7 @@ import java.util.List;
 
 @Validated
 @RestController
-@RequestMapping(path = "/api/Adherent")
+@RequestMapping(path = "/api/adherent")
 @CrossOrigin("*")
 public class AdherentRestController {
 
@@ -72,5 +72,11 @@ public class AdherentRestController {
     public ResponseEntity<String> deleteAdherent(@PathVariable Long id){
         adherentService.deleteAdherent(id);
         return ResponseEntity.ok("l'adherent est supprimé");
+    }
+
+    @GetMapping(path ="/getByUsername")
+    public ResponseEntity<AdherentResponseDTO> getAdherentById(@RequestParam("username") String username) throws AdherentIdNotFoundException {
+        AdherentResponseDTO adherent = adherentService.getAdherentByUsername(username);
+        return ResponseEntity.ok(adherent);
     }
 }

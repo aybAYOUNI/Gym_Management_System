@@ -22,4 +22,5 @@ public interface AdherentService {
     public void deleteAdherent(Long adherentDtoId);
     public AdherentResponseDTO addSubscriptionToAdherent(Long adherentId, Long subscriptionId) throws AdherentIdNotFoundException, SubscriptionIdNotFoundException;
 
+    AdherentResponseDTO getAdherentByUsername(String username);
 }

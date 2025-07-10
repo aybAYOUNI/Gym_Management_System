@@ -1,5 +1,6 @@
 package ma.enset.gym_management.repositories;
 
+import ma.enset.gym_management.dto.AdherentResponseDTO;
 import ma.enset.gym_management.entities.Adherent;
 import org.springframework.data.jpa.repository.JpaRepository;
 

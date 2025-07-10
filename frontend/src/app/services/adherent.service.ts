@@ -7,7 +7,7 @@ import { Adherent } from '../models/adherent.model';
   providedIn: 'root'
 })
 export class AdherentService {
-  private endpoint = 'adherents';
+  private endpoint = 'adherent';
 
   constructor(private apiService: ApiService) { }
 
@@ -31,4 +31,9 @@ export class AdherentService {
   deleteAdherent(id: number): Observable<any> {
     return this.apiService.delete<any>(this.endpoint, id);
   }
+
+  getByUsername(username : string): Observable<Adherent>{
+    return this.apiService.getByUsername(`${this.endpoint}/getByUsername?username=${username}`);
+  }
+
 }
