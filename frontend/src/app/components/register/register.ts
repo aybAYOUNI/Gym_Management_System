@@ -30,7 +30,6 @@ export class Register implements OnInit{
     });
   }
 
-
   onSubmit(): void {
     if (this.registrationForm.valid) {
       this.authService.addAdherent(this.registrationForm.value).subscribe({
@@ -39,13 +38,13 @@ export class Register implements OnInit{
             this.registrationForm.reset();
             this.router.navigate(['/authentication']); // Chemin entre crochets
           } else {
-            this.errorMessage = 'Erreur lors de l\'inscription. Veuillez réessayer.';
+            this.errorMessage = 'Erreur lors de l inscription. Veuillez réessayer.';
             console.error('Inscription échouée avec le statut:', res.status);
           }
         },
         error: (err) => {
           this.errorMessage = 'Une erreur est survenue. Veuillez vérifier votre connexion ou réessayer plus tard.';
-          console.error('Erreur lors de l\'inscription:', err);
+          console.error('Erreur lors de l inscription:', err);
         }
       });
     } else {
@@ -54,7 +53,6 @@ export class Register implements OnInit{
       this.registrationForm.markAllAsTouched(); // Marque tous les champs comme "touchés" pour afficher les erreurs
     }
   }
-
 
   onSubmitCoach(): void {
     if (this.registrationForm.valid) {

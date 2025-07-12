@@ -24,18 +24,15 @@ export class AdherentService {
   }
 
   updateAdherent(id: number | undefined, adherent: Adherent): Observable<Adherent> {
-
     return this.apiService.put<Adherent>(`${this.endpoint}/update` , id, adherent);
-
   }
-
 
   deleteAdherent(id: number): Observable<any> {
     return this.apiService.delete<any>(this.endpoint, id);
   }
 
   getByUsername(username : string): Observable<Adherent>{
-    return this.apiService.getByUsername(`${this.endpoint}/getByUsername?username=${username}`);
+    return this.apiService.getByUsername(`${this.endpoint}/getByEmail?username=${username}`);
   }
 
 }

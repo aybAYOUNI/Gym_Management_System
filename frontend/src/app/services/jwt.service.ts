@@ -23,4 +23,13 @@ export class JwtService {
   getUserUsername() : string {
     return this.decodeToken().sub
   }
+
+  isLoggedIn(): boolean {
+    return !!localStorage.getItem('token');
+  }
+
+  logout(): void {
+    localStorage.clear();
+  }
+
 }

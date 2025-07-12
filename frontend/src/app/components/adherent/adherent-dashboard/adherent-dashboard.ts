@@ -46,7 +46,7 @@ export class AdherentDashboard implements OnInit {
        nom: [this.adherent.nom, Validators.required],
        email: [this.adherent.email, [Validators.required, Validators.email]],
        phone: [this.adherent.phone],
-       genre: [this.adherent.gender],
+       gender: [this.adherent.gender],
        age: [this.adherent.age],
        poids: [this.adherent.poids],
      });
@@ -64,7 +64,7 @@ export class AdherentDashboard implements OnInit {
       const updatedAdherent: Adherent = {
         ...this.adherent,
         ...this.profileForm.value,
-        gender: this.profileForm.value.genre
+        gender: this.profileForm.value.gender
       };
 
       console.log(updatedAdherent)
@@ -81,8 +81,5 @@ export class AdherentDashboard implements OnInit {
       });
     }
   }
-
-
-
 }
 

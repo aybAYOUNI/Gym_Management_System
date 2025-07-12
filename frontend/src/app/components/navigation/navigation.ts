@@ -1,6 +1,7 @@
 import {Component, HostListener, OnInit} from '@angular/core';
-import { RouterLink, RouterLinkActive } from '@angular/router';
+import {Router, RouterLink, RouterLinkActive} from '@angular/router';
 import {NgIf} from '@angular/common';
+import {JwtService} from '../../services/jwt.service';
 
 @Component({
   selector: 'app-navigation',
@@ -13,21 +14,44 @@ export class NavigationComponent implements  OnInit {
   isMenuOpen: boolean = false;
   scrolled: boolean = false;
   hasRoleAdherent?: boolean;
+  hasRoleCoach?: boolean;
+  hasRoleAdmin?: boolean;
   private user: any;
 
   toggleMenu() {
     this.isMenuOpen = !this.isMenuOpen;
   }
+  userRole: string | null = null;
+  isLoggedIn: boolean = false;
+
+  constructor(private jwtService: JwtService,private router: Router) {}
 
 
   ngOnInit() {
-     if (this.user.role == 'admin') {
-       this.hasRoleAdherent = true;
-     }
-    if (this.user.role == 'adehrent') {
-      this.hasRoleAdherent = true;
-    }
+    const role = this.jwtService.getUserRole();
+    this.isLoggedIn = this.jwtService.isLoggedIn();
 
+    if (role) {
+      this.userRole = role;
+      console.log("Rôle utilisateur :", role);
+      if (role == 'ADHERENT') {
+        this.hasRoleAdherent = true;
+      }
+      if (role == 'COACH') {
+        this.hasRoleCoach = true;
+      }
+      if (role == 'ADMIN') {
+        this.hasRoleAdmin = true;
+      }
+    } else {
+      console.warn("Aucun rôle trouvé ou utilisateur non connecté");
+      this.userRole = 'VISITEUR';
+    }
+  }
+  logout(): void {
+    // ou   localStorage.clear();
+    this.jwtService.logout();
+    this.router.navigate(['/authentication']);
   }
 
 

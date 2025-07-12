@@ -12,7 +12,7 @@ export class Auth {
 
   public addAdherent(user: any): Observable<HttpResponse<any>> {
     return this.apiService.post<any>(
-      "Adherent/addNewAdherent",
+      "adherent/addNewAdherent",
       user,
       { observe: 'response' }
     );

@@ -6,16 +6,18 @@
     </button>
     <div class="navbar-menu" [class.open]="isMenuOpen">
       <a class="navbar-item" routerLink="/" routerLinkActive="active" [routerLinkActiveOptions]="{exact: true}">Home</a>
-      <a class="navbar-item" routerLink="/adherents" routerLinkActive="active" *ngIf="hasRoleAdherent">Adherents</a>
-      <a class="navbar-item" routerLink="/coaches" routerLinkActive="active">Coaches</a>
-      <a class="navbar-item" routerLink="/exercises" routerLinkActive="active">Exercises</a>
-      <a class="navbar-item" routerLink="/programs" routerLinkActive="active">Programs</a>
-      <a class="navbar-item" routerLink="/registrations" routerLinkActive="active">Registrations</a>
-      <a class="navbar-item" routerLink="/repasts" routerLinkActive="active">Repasts</a>
-      <a class="navbar-item" routerLink="/register" routerLinkActive="active">Register</a>
-      <a class="navbar-item" routerLink="/authentication" routerLinkActive="active">Login</a>
+      <a class="navbar-item" routerLink="/adherents" routerLinkActive="active" *ngIf="userRole ===  'ADMIN' " >Adherents</a>
+      <a class="navbar-item" routerLink="/coaches" routerLinkActive="active" *ngIf="userRole ===  'ADMIN' ">Coaches</a>
+      <a class="navbar-item" routerLink="/exercises" routerLinkActive="active" *ngIf="userRole ===  'ADMIN' || userRole === 'COACH'">Exercises</a>
+      <a class="navbar-item" routerLink="/programs" routerLinkActive="active" *ngIf="userRole ===  'ADMIN' ||userRole === 'COACH' ||userRole === 'ADHERENT' ">Programs</a>
+      <a class="navbar-item" routerLink="/registrations" routerLinkActive="active" *ngIf="userRole === 'ADMIN' ||userRole === 'COACH' ||userRole === 'ADHERENT' ">Registrations</a>
+      <a class="navbar-item" routerLink="/repasts" routerLinkActive="active" *ngIf="userRole === 'ADMIN' ||userRole === 'COACH'" >Repasts</a>
+      <a class="navbar-item" routerLink="/register" routerLinkActive="active" *ngIf="!isLoggedIn" (click)="logout()" >Register</a>
+      <a class="navbar-item" routerLink="/authentication" routerLinkActive="active"  *ngIf="!isLoggedIn">Login</a>
+      <a class="navbar-item" routerLink="/authentication"  *ngIf="isLoggedIn" (click)="logout()" >Logout</a>
 
-      <a class="navbar-item" routerLink="/adherentDashboard" routerLinkActive="active">Profile</a>
+
+      <a class="navbar-item" routerLink="/adherentDashboard" routerLinkActive="active" *ngIf="userRole === 'ADMIN' ||userRole === 'COACH' ||userRole === 'ADHERENT' ">Profile</a>
     </div>
   </div>
 </nav>

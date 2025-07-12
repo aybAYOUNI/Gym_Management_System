@@ -1,7 +1,7 @@
 
 export enum  Sex{
 
-  HOOME ='HOOME',
+  HOMME ='HOMME',
   FEMME = 'FEMME'
 }
 
