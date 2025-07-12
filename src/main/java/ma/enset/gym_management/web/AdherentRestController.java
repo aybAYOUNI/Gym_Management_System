@@ -5,7 +5,9 @@ import jakarta.validation.Valid;
 import ma.enset.gym_management.dto.AdherentDto;
 import ma.enset.gym_management.dto.AdherentResponseDTO;
 
+import ma.enset.gym_management.dto.UpdateAdherentRequest;
 import ma.enset.gym_management.exceptions.AdherentAlreadyExistsException;
+import ma.enset.gym_management.exceptions.AdherentEmailNotFoundException;
 import ma.enset.gym_management.exceptions.AdherentIdNotFoundException;
 import ma.enset.gym_management.exceptions.SubscriptionIdNotFoundException;
 import ma.enset.gym_management.services.AdherentService;
@@ -50,7 +52,7 @@ public class AdherentRestController {
 
 
     @PutMapping(path = "/update/{id}")
-    public ResponseEntity<AdherentResponseDTO> updateAdherent(@PathVariable Long id, @Valid @RequestBody AdherentDto adherentDto) throws AdherentIdNotFoundException {
+    public ResponseEntity<AdherentResponseDTO> updateAdherent(@PathVariable Long id, @Valid @RequestBody UpdateAdherentRequest adherentDto) throws AdherentIdNotFoundException {
       AdherentResponseDTO adherentDtoA = adherentService.updateAdherent(id,adherentDto);
       return ResponseEntity.ok(adherentDtoA);
     }
@@ -67,9 +69,9 @@ public class AdherentRestController {
         return ResponseEntity.ok("l'adherent est supprimé");
     }
 
-    @GetMapping(path ="/getByUsername")
-    public ResponseEntity<AdherentResponseDTO> getAdherentByUserName(@RequestParam("username") String username) throws AdherentIdNotFoundException {
-        AdherentResponseDTO adherent = adherentService.getAdherentByUsername(username);
+    @GetMapping(path ="/getByEmail")
+    public ResponseEntity<AdherentResponseDTO> getAdherentByEmail(@RequestParam("username") String username) throws AdherentEmailNotFoundException {
+        AdherentResponseDTO adherent = adherentService.getAdherentByEmail(username);
         return ResponseEntity.ok(adherent);
     }
 }

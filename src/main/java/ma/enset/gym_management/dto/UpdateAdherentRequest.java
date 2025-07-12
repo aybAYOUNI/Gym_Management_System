@@ -25,7 +25,7 @@ public class UpdateAdherentRequest {
     @Size(min = 2, message = "Le username doit contenir au moins 2 caractères.")
     private String email;
 
-    private Sex genre;
+    private Sex gender;
     private int age;
     private double poids;
     private String phone;

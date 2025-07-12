@@ -7,6 +7,7 @@ import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import ma.enset.gym_management.enums.Sex;
 
 
 @AllArgsConstructor @NoArgsConstructor
@@ -27,6 +28,11 @@ public class AdherentDto {
     @NotNull(message = "mot de passe est obligatoire.")
     @Size(min = 5, message = "mot de passedoit contenir au moins 5 caractères.")
     private String password;
+
+    private Sex gender;
+    private int age;
+    private double poids;
+    private String phone;
 
 
 }

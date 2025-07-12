@@ -2,6 +2,7 @@ package ma.enset.gym_management.services;
 
 import ma.enset.gym_management.dto.AdherentDto;
 import ma.enset.gym_management.dto.AdherentResponseDTO;
+import ma.enset.gym_management.dto.UpdateAdherentRequest;
 import ma.enset.gym_management.entities.Adherent;
 import ma.enset.gym_management.entities.Subscription;
 import ma.enset.gym_management.exceptions.AdherentAlreadyExistsException;
@@ -18,7 +19,7 @@ public interface AdherentService {
     public AdherentResponseDTO getAdherentByEmail(String email) throws AdherentEmailNotFoundException;
 
     public AdherentResponseDTO addAdherent(AdherentDto adherentDto) throws AdherentAlreadyExistsException;
-    public AdherentResponseDTO updateAdherent(long adherentId, AdherentDto adherentDto) throws AdherentIdNotFoundException;
+    public AdherentResponseDTO updateAdherent(long adherentId, UpdateAdherentRequest adherentDto) throws AdherentIdNotFoundException;
     public void deleteAdherent(Long adherentDtoId);
     public AdherentResponseDTO addSubscriptionToAdherent(Long adherentId, Long subscriptionId) throws AdherentIdNotFoundException, SubscriptionIdNotFoundException;
 

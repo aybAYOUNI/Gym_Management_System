@@ -4,6 +4,7 @@ import lombok.AllArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import ma.enset.gym_management.dto.AdherentDto;
 import ma.enset.gym_management.dto.AdherentResponseDTO;
+import ma.enset.gym_management.dto.UpdateAdherentRequest;
 import ma.enset.gym_management.entities.Adherent;
 import ma.enset.gym_management.entities.Subscription;
 import ma.enset.gym_management.exceptions.AdherentAlreadyExistsException;
@@ -103,7 +104,7 @@ public class AdherentServiceImpl implements AdherentService {
 
 
     @Override
-    public AdherentResponseDTO updateAdherent(long adherentId ,AdherentDto adherentDto) throws AdherentIdNotFoundException {
+    public AdherentResponseDTO updateAdherent(long adherentId , UpdateAdherentRequest adherentDto) throws AdherentIdNotFoundException {
         log.info("Mise à jour l'adherent avec le ID = {}", adherentId);
         Adherent existingAdherent =adherentRepository.findById(adherentId).orElseThrow(()->
                 new AdherentIdNotFoundException("Adherent avec le ID '"+adherentId+"' non trouvé "));

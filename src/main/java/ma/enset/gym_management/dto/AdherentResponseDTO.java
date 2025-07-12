@@ -19,10 +19,10 @@ public class AdherentResponseDTO {
     private String nom;
     private String firstName;
     private String email;
-    private Sex sex;
+    private Sex gender ;
     private int age;
     private double poids;
-    private String telephone;
+    private String phone;
 
 
 }

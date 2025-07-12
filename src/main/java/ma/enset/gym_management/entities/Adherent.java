@@ -21,10 +21,10 @@ import java.util.Collection;
 public class Adherent extends User {
 
     @Enumerated(EnumType.STRING)
-    private Sex sex;
+    private Sex gender;
     private int age;
     private double poids;
-    private String telephone;
+    private String phone;
 
 
 
