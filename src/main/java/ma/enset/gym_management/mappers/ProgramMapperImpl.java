@@ -219,13 +219,14 @@ public class ProgramMapperImpl {
     public CoachingSessionResponseDto  mapCoachingToCoachingRespDto(CoachingSession coachingSession) {
         CoachingSessionResponseDto coachingSessionResponseDto = new CoachingSessionResponseDto();
         BeanUtils.copyProperties(coachingSession, coachingSessionResponseDto);
+        coachingSessionResponseDto.setAdherent(mapToAdherentDto(coachingSession.getAdherent()));
+        coachingSessionResponseDto.setCoach(mapToCoachDto(coachingSession.getCoach()));
         return coachingSessionResponseDto;
     }
 
     public SubscriptionResponseDto mapSubsToSubsResDTO(Subscription subscription) {
         SubscriptionResponseDto subscriptionResponseDto = new SubscriptionResponseDto();
         BeanUtils.copyProperties(subscription, subscriptionResponseDto);
-        subscriptionResponseDto.setAdherents(subscription.getAdherents().stream().map(this::mapToAdherentResponseDTO).collect(Collectors.toList()));
 
         return subscriptionResponseDto;
     }

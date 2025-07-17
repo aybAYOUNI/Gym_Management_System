@@ -19,7 +19,7 @@ public class CoachingSessionDto {
 
     private boolean statute;
 
-    private Adherent adherent;
+    private AdherentDto adherent;
 
-    private Coach coach;
+    private CoachDto coach;
 }

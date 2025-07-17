@@ -35,6 +35,6 @@ public class SubscriptionResponseDto {
     @JsonFormat(pattern = "dd.MM.yyyy")
     private LocalDate dateFin;
 
-    private Collection<AdherentResponseDTO> adherents = new ArrayList<>();
+   // private Collection<AdherentResponseDTO> adherents = new ArrayList<>();
 
 }

@@ -8,6 +8,7 @@ import ma.enset.gym_management.dto.CoachingSessionResponseDto;
 import ma.enset.gym_management.exceptions.*;
 import ma.enset.gym_management.services.CoachingSessionService;
 
+import org.springframework.format.annotation.DateTimeFormat;
 import org.springframework.http.ResponseEntity;
 import org.springframework.validation.annotation.Validated;
 import org.springframework.web.bind.annotation.*;
@@ -48,7 +49,7 @@ public class CoachingSessionRestController {
     }
     @PostMapping("/reservationSession")
     public ResponseEntity<CoachingSessionResponseDto> reservationCoachingSession(
-            @Valid @RequestParam LocalDateTime dateTime,
+            @Valid @RequestParam @DateTimeFormat(pattern = "dd.MM.yyyy HH:mm:ss") LocalDateTime dateTime,
             @RequestParam String coachUserName,
             @RequestParam String adherentUserName
     ) throws CoachEmailNotFoundException, AdherentEmailNotFoundException {

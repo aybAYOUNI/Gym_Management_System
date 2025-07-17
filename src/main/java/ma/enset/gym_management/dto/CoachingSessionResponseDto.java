@@ -17,11 +17,12 @@ public class CoachingSessionResponseDto{
 
     private Long id;
 
+    @JsonFormat(pattern = "dd.MM.yyyy HH:mm:ss")
     private LocalDateTime dateInscriptionSession;
 
-    private boolean statute;
+    private boolean statute= false;
 
-    private Adherent adherent;
+    private AdherentDto adherent;
 
-    private Coach coach;
+    private CoachDto coach;
 }

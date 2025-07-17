@@ -25,7 +25,7 @@ public class ProgramResponseDto {
     private int dureeEnSemaines;
     private boolean visibilite;
     private ProgramObjective objective;
-    private Coach coach;
+    private CoachDto coach;
     private Collection<ExerciseResponseDto> exerciseResponseDto = new ArrayList<>();
     private Collection<RepastResponseDto> repastResponseDto = new ArrayList<>();
 }
