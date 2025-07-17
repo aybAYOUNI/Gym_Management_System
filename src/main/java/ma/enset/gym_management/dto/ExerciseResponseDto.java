@@ -14,10 +14,16 @@ import java.util.Date;
 @Setter
 
 public class ExerciseResponseDto {
-    private Long id;
+
     private String nom;
+
     private String description;
-    private Date duree;
+
+    private int repetitions;
+
+    private int series;
+
     private ExerciseCategorie categorie;
+
     private String image_exercise;
 }

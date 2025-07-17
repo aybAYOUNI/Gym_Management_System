@@ -18,5 +18,5 @@ public class CoachResponseDto {
     private String email;
     private String specialite;
 
-    private Collection<ProgramResponseDto> programResponseDto = new ArrayList<>();
+
 }
