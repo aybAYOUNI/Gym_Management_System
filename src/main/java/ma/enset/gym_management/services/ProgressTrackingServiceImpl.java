@@ -19,7 +19,7 @@ import java.util.List;
 @Service
 @Transactional
 @AllArgsConstructor
-public class ProgressTrackingServiceImpl implements ProgressTrackingService {
+public class  ProgressTrackingServiceImpl implements ProgressTrackingService {
 
     private final ProgressTrackingRepository trackingRepository;
     private final AdherentRepository adherentRepository;
@@ -34,7 +34,7 @@ public class ProgressTrackingServiceImpl implements ProgressTrackingService {
         ProgressTracking tracking = ProgressTracking.builder()
                 .date(trackingDto.getDate())
                 .poids(trackingDto.getPoids())
-                .notes(trackingDto.getNotes())
+                .objective(trackingDto.getObjective())
                 .adherent(adherent)
                 .build();
         ProgressTracking newTracking = trackingRepository.save(tracking);

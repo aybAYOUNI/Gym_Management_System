@@ -2,6 +2,7 @@ package ma.enset.gym_management.entities;
 
 import jakarta.persistence.*;
 import lombok.*;
+import ma.enset.gym_management.enums.ProgramObjective;
 
 import java.time.LocalDate;
 
@@ -15,7 +16,7 @@ public class ProgressTracking {
 
     private LocalDate date;
     private double poids;
-    private String notes;
+    private ProgramObjective objective;
 
     @ManyToOne
     private Adherent adherent;
