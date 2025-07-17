@@ -12,7 +12,7 @@
       <a class="navbar-item" routerLink="/programs" routerLinkActive="active" *ngIf="userRole ===  'ADMIN' ||userRole === 'COACH' ||userRole === 'ADHERENT' ">Programs</a>
       <a class="navbar-item" routerLink="/registrations" routerLinkActive="active" *ngIf="userRole === 'ADMIN' ||userRole === 'COACH' ||userRole === 'ADHERENT' ">Registrations</a>
       <a class="navbar-item" routerLink="/repasts" routerLinkActive="active" *ngIf="userRole === 'ADMIN' ||userRole === 'COACH'" >Repasts</a>
-      <a class="navbar-item" routerLink="/register" routerLinkActive="active" *ngIf="!isLoggedIn" (click)="logout()" >Register</a>
+      <a class="navbar-item" routerLink="/register" routerLinkActive="active" *ngIf="!isLoggedIn"  >Register</a>
       <a class="navbar-item" routerLink="/authentication" routerLinkActive="active"  *ngIf="!isLoggedIn">Login</a>
       <a class="navbar-item" routerLink="/authentication"  *ngIf="isLoggedIn" (click)="logout()" >Logout</a>
 
